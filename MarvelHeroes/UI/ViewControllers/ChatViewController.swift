@@ -18,8 +18,8 @@ private enum Constants {
     static let placeholderMessage = "Type something"
 }
 
-final class ChatViewController: UIViewController {
-    
+class ChatViewController: UIViewController {
+    var chat = Chat()
     var disposeBag = DisposeBag()
     var messages = [Message]()
     {
@@ -28,7 +28,6 @@ final class ChatViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    var chatName: String = ""
     var viewModel = ChatViewModel()
     
     @IBOutlet weak var tableView: UITableView!
@@ -37,11 +36,9 @@ final class ChatViewController: UIViewController {
     @IBOutlet weak var textAreaBottom: NSLayoutConstraint!
     @IBOutlet weak var emptyChatView: UIView!
     
-    @IBAction func closeWindow() {
-        self.dismiss(animated: true, completion: nil)
-    }
     @IBAction func onSendButtonTapped(_ sender: Any) {
         sendMessage()
+        answerMessage()
     }
     
     private func sendMessage() {
@@ -56,10 +53,16 @@ final class ChatViewController: UIViewController {
         textView.endEditing(true)
         addTextViewPlaceholer()
         scrollToLastCell()
-        
     }
     
-   
+    private func answerMessage() {
+        messages.append(MessageAnswer.randomMessageAnswer(author: chat.name))
+        //        for message in messages {
+        //            chat.messages.append(message)
+        //        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +72,7 @@ final class ChatViewController: UIViewController {
         startObservingKeyboard()
         tableView.dataSource = self
         setupBindings()
-        viewModel.getChat(name: chatName)
+        viewModel.getChat(name: chat.name)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,10 +82,8 @@ final class ChatViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let chat = Chat()
-        chat.name = chatName
-        for message in messages {
-            chat.messages.append(message)
+        for item in self.messages {
+            chat.messages.append(item)
         }
         viewModel.saveChat(chat: chat)
     }
@@ -93,7 +94,7 @@ final class ChatViewController: UIViewController {
         let navigationBar = navigationController?.navigationBar
         navigationBar?.shadowImage = nil
     }
-  
+    
     private func startObservingKeyboard() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
@@ -125,13 +126,13 @@ final class ChatViewController: UIViewController {
         guard let keyboardFrame = notification.userInfo?[key] as? CGRect else {
             return
         }
-
+        
         let safeAreaBottom = view.safeAreaLayoutGuide.layoutFrame.maxY
         let viewHeight = view.bounds.height
         let safeAreaOffset = viewHeight - safeAreaBottom
-
+        
         let lastVisibleCell = tableView.indexPathsForVisibleRows?.last
-
+        
         UIView.animate(
             withDuration: 0.3,
             delay: 0,
@@ -183,9 +184,10 @@ final class ChatViewController: UIViewController {
     private func setupBindings() {
         
         viewModel.currentChat.subscribe(onNext: { chat in
-            self.chatName = chat.name
-            self.messages = Array(chat.messages)
-            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
+            for item in chat.messages {
+                self.messages.append(item)
+            }
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
 }
 
@@ -212,7 +214,6 @@ extension ChatViewController: UITableViewDataSource {
             as? MessageCell & UITableViewCell else {
                 return UITableViewCell()
         }
-        
         cell.message = message
         
         if indexPath.row < messages.count - 1 {

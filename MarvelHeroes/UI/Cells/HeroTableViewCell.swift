@@ -20,6 +20,7 @@ class HeroTableViewCell: UITableViewCell {
         self.heroNameLbl.text! = hero.name
         guard let thumbnail = hero.thumbnail else { return }
         guard let url = URL(string: thumbnail.fileUrl) else { return }
+        print(url)
         heroImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "default_hero_image"))
     }
     

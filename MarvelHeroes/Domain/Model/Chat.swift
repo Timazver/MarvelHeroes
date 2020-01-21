@@ -10,6 +10,6 @@ import Foundation
 import RealmSwift
 
 class Chat: Object {
-    dynamic var name = ""
-    dynamic var messages = List<Message>()
+    @objc dynamic var name = "Chat"
+    var messages = List<Message>()
 }

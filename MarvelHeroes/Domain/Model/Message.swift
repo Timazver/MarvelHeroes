@@ -10,9 +10,8 @@ import Foundation
 import RealmSwift
 
 class Message: Object {
-    
-    dynamic var author:String = ""
-    dynamic var text: String = ""
-    dynamic var isIncoming: Bool = false
+    @objc dynamic var author:String = ""
+    @objc dynamic var text: String = ""
+    @objc dynamic var isIncoming: Bool = false
     
 }

@@ -14,7 +14,7 @@ struct Thumbnail: Decodable {
     
     var fileUrl: String {
         get {
-            return "\(path ?? "").\(`extension` ?? ""))"
+            return "\(path ?? "").\(`extension` ?? "")"
         }
     }
 }

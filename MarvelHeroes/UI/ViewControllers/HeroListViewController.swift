@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RealmSwift
 
 class HeroListViewController: UIViewController {
     
@@ -32,7 +33,6 @@ class HeroListViewController: UIViewController {
 
     
     func setupBindings() {
-       
         viewModel
             .error
             .observeOn(MainScheduler.instance)
@@ -61,7 +61,7 @@ class HeroListViewController: UIViewController {
 
     func forwardToChatVC() {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as! ChatViewController
-        vc.chatName = chatName
+        vc.chat.name = chatName
         self.present(vc, animated: true, completion: nil)
     }
 

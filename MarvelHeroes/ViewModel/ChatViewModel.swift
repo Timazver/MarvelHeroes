@@ -13,7 +13,6 @@ class ChatViewModel {
 
     var currentChat = PublishSubject<Chat>()
     var chatManager = ChatManager()
-    var message = PublishSubject<Message>()
     
     func saveChat(chat: Chat) {
         chatManager.saveChat(chat: chat)

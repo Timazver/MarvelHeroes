@@ -18,7 +18,6 @@ class HeroListViewModel {
     
     func getAllHeroes() {
         HeroesManager.shared.getAllHeroes().subscribe(onNext: { heroesArray in
-//            print(heroesArray)
             self.heroes.onNext(heroesArray)
         }, onError: nil, onCompleted: nil, onDisposed: nil)
         
