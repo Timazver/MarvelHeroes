@@ -20,7 +20,6 @@
 		39350CC723D1EFBE00ABEA7C /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39350CC623D1EFBE00ABEA7C /* MessageManager.swift */; };
 		3968669623CD90C300BE41B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968669523CD90C300BE41B3 /* AppDelegate.swift */; };
 		3968669D23CD90C300BE41B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3968669B23CD90C300BE41B3 /* Main.storyboard */; };
-		396866A023CD90C300BE41B3 /* MarvelHeroes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3968669E23CD90C300BE41B3 /* MarvelHeroes.xcdatamodeld */; };
 		396866A223CD90C600BE41B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396866A123CD90C600BE41B3 /* Assets.xcassets */; };
 		396866A523CD90C600BE41B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396866A323CD90C600BE41B3 /* LaunchScreen.storyboard */; };
 		396866B023CD90C700BE41B3 /* MarvelHeroesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396866AF23CD90C700BE41B3 /* MarvelHeroesTests.swift */; };
@@ -71,7 +70,6 @@
 		3968669223CD90C300BE41B3 /* MarvelHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3968669523CD90C300BE41B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3968669C23CD90C300BE41B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3968669F23CD90C300BE41B3 /* MarvelHeroes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelHeroes.xcdatamodel; sourceTree = "<group>"; };
 		396866A123CD90C600BE41B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		396866A423CD90C600BE41B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		396866A623CD90C600BE41B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 		396866BC23CD99AA00BE41B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3968669E23CD90C300BE41B3 /* MarvelHeroes.xcdatamodeld */,
 				396866BD23CD9A8600BE41B3 /* Hero.swift */,
 				396866BF23CD9BD900BE41B3 /* thumbnail.swift */,
 				396866C123CDBB7500BE41B3 /* Chat.swift */,
@@ -541,7 +538,6 @@
 				396866CE23CDC3ED00BE41B3 /* ChatRepository.swift in Sources */,
 				39350CC323D1E68F00ABEA7C /* ChatManager.swift in Sources */,
 				39B4904B23CEFDD90098EE53 /* HeroesRepository.swift in Sources */,
-				396866A023CD90C300BE41B3 /* MarvelHeroes.xcdatamodeld in Sources */,
 				396B74BB23CF2654008B560A /* HeroListViewModel.swift in Sources */,
 				39F023A123D0722300F098C2 /* BaseResponse.swift in Sources */,
 				39032AC023D050F600981FB8 /* ChatViewController.swift in Sources */,
@@ -820,19 +816,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3968669E23CD90C300BE41B3 /* MarvelHeroes.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3968669F23CD90C300BE41B3 /* MarvelHeroes.xcdatamodel */,
-			);
-			currentVersion = 3968669F23CD90C300BE41B3 /* MarvelHeroes.xcdatamodel */;
-			path = MarvelHeroes.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3968668A23CD90C300BE41B3 /* Project object */;
 }

@@ -6,10 +6,8 @@
 //  Copyright © 2020 MarvelHeroes. All rights reserved.
 //
 
-
 import UIKit
 import RxSwift
-import RealmSwift
 
 private enum Constants {
     static let incomingMessageCell = "incomingMessageCell"
@@ -57,12 +55,7 @@ class ChatViewController: UIViewController {
     
     private func answerMessage() {
         messages.append(MessageAnswer.randomMessageAnswer(author: chat.name))
-        //        for message in messages {
-        //            chat.messages.append(message)
-        //        }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,9 +151,6 @@ class ChatViewController: UIViewController {
         })
     }
     
-    
-    // MARK: - Set up
-    
     private func setUpTextView() {
         textView.isScrollEnabled = false
         textView.textContainer.heightTracksTextView = true
@@ -191,7 +181,6 @@ class ChatViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(
@@ -237,7 +226,6 @@ extension ChatViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITextViewDelegate
 extension ChatViewController: UITextViewDelegate {
     private func addTextViewPlaceholer() {
         textView.text = Constants.placeholderMessage

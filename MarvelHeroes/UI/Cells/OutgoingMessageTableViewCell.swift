@@ -1,11 +1,9 @@
 //
-//  OutgoingMessageTableViewCell.swift
-//  CometChat
+//  HeroTableViewCell.swift
+//  MarvelHeroes
 //
-//  Created by Marin Benčević on 08/08/2019.
-//  Copyright © 2019 marinbenc. All rights reserved.
-//
-
+//  Created by tima on 1/15/20.
+//  Copyright © 2020 MarvelHeroes. All rights reserved.
 import UIKit
 
 class OutgoingMessageTableViewCell: UITableViewCell, MessageCell {

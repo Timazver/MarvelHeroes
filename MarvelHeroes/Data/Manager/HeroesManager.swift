@@ -18,7 +18,6 @@ class HeroesManager: HeroesRepository {
     
     func getAllHeroes() -> Observable<[Hero]> {
         return Observable.create { observer -> Disposable in
-//            if let url = URL(string: BaseApi.BASE_URL+self.endPoint.path) {
             if var urlComponents = URLComponents(string: BaseApi.BASE_URL+self.endPoint.path) {
                 let session = URLSession.shared
                 var queryItems = [URLQueryItem]()
@@ -27,7 +26,8 @@ class HeroesManager: HeroesRepository {
                     queryItems.append(URLQueryItem(name: key, value: value as? String))
                 }
                 urlComponents.queryItems = queryItems
-                var request = URLRequest(url: urlComponents.url!)
+                guard let url = urlComponents.url else { return Disposables.create {} }
+                var request = URLRequest(url: url)
                 request.httpMethod = self.endPoint.httpMethod.rawValue
                 
                 for (key,value) in self.endPoint.httpHeaders {

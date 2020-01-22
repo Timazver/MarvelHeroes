@@ -16,13 +16,12 @@ class HeroListViewController: UIViewController {
     
     @IBOutlet weak  var tableView: UITableView!
     
-    var viewModel: HeroListViewModel!
+    var viewModel = HeroListViewModel()
     let disposeBag = DisposeBag()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = HeroListViewModel()
+        
         viewModel.getAllHeroes()
     }
     
@@ -30,7 +29,7 @@ class HeroListViewController: UIViewController {
         super.viewDidAppear(animated)
         setupBindings()
     }
-
+    
     
     func setupBindings() {
         viewModel
@@ -49,22 +48,22 @@ class HeroListViewController: UIViewController {
         
         viewModel.heroes.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: HeroTableViewCell.self)) {(row, hero, cell) in
             cell.configure(hero: hero)
-            }.disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 let cell = self?.tableView.cellForRow(at: indexPath) as? HeroTableViewCell
-                self?.chatName = (cell?.heroNameLbl.text)!
+                self?.chatName = cell?.heroNameLbl.text ?? ""
                 self?.forwardToChatVC()
             }).disposed(by:disposeBag)
     }
-
+    
     func forwardToChatVC() {
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as! ChatViewController
+        guard let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as? ChatViewController else { return }
         vc.chat.name = chatName
         self.present(vc, animated: true, completion: nil)
     }
-
+    
 }
 
 
